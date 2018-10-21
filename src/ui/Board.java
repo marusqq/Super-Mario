@@ -9,11 +9,16 @@ import game.Mario;
 public final class Board extends JPanel implements ActionListener { //final
 
 	Mario mario;
+	//Mario mario2;
 	public Image background;
 	Timer time;
 	
 	public Board() {
 		mario = new Mario(0,530);
+		//mario2 = new Mario(50,530);
+		//if(super.equals(mario))
+			//System.out.println("two marios\n\n");
+		System.out.println(mario);
 		addKeyListener(new AL());
 		setFocusable(true);
 		ImageIcon i = new ImageIcon("C:/Users/Marius/Desktop/background.png");
