@@ -16,7 +16,8 @@ public class Mario extends Entity {
 	
 	public Mario() {
 		super();
-		mario = playerFacingRight.getImage(); 
+		super.setSpeed(1);
+		mario = playerFacingRight.getImage();
 	}
 	
 		
@@ -25,8 +26,7 @@ public class Mario extends Entity {
 		mario = playerFacingRight.getImage();
 		this.x = x;
 		this.y = y;
-		diry = 1145;
-		
+		super.setSpeed(1);
 	}
 	
 	
@@ -64,12 +64,19 @@ public class Mario extends Entity {
 	public void keyPressed(KeyEvent press) {
 		int key = press.getKeyCode();
 		//System.out.println(getX());
-		if(key == KeyEvent.VK_A)
-			dirx = -1;
+		if(key == KeyEvent.VK_A) {
+			
+			mario = playerFacingLeft.getImage(); 
+			dirx = -speed;	
+		}
+			
 
-		if(key == KeyEvent.VK_D)
-			dirx = 1;
-		
+		if(key == KeyEvent.VK_D) {
+			
+			mario = playerFacingRight.getImage(); 
+			dirx = speed;
+		}
+			
 		//if(key == KeyEvent.VK_SPACE)
 			//jump();
 	}
