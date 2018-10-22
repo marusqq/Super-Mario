@@ -10,30 +10,29 @@ public class Mario extends Entity {
 	
 	public int diry;
 	Image mario;
-	ImageIcon playerFacingLeft = new     ImageIcon("C:/Users/Marius/Desktop/marioleft.png"); 
-    ImageIcon playerFacingRight = new     ImageIcon("C:/Users/Marius/Desktop/marioright.png");
-	Mario supermario;
+	ImageIcon playerFacingLeft = new ImageIcon("C:/Users/Marius/Desktop/marioleft.png"); 
+    ImageIcon playerFacingRight = new ImageIcon("C:/Users/Marius/Desktop/marioright.png");
 	
 	public Mario() {
 		super();
 		super.setSpeed(1);
-		
+		super.setName("Mario");
 		mario = playerFacingRight.getImage();
 		
-		super.changeName("Mario");
 	}
 	
 		
 	public Mario(int x, int y) {
 		super();
 		super.setSpeed(1);
+		super.setName("Mario");
 		
 		mario = playerFacingRight.getImage();
 		
 		this.x = x;
 		this.y = y;
 		
-		super.changeName("Mario");
+		
 		
 	}
 	

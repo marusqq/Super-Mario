@@ -4,8 +4,8 @@ import javax.swing.*;
 
 public class Frame {
 	
-	public int LENGTH = 1152;
-	public int WIDTH = 648;
+	public final int LENGTH = 1152;
+	public final int WIDTH = 648;
 	
 	public static void main(String[] args) {
 		new Frame();

@@ -4,21 +4,21 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import game.Mario;
+import game.Goomba;
 
 @SuppressWarnings("serial")
 public final class Board extends JPanel implements ActionListener { //final
 
 	Mario mario;
-	//Mario mario2;
+	Goomba goomba;
 	public Image background;
 	Timer time;
 	
 	public Board() {
 		mario = new Mario(0,530);
-		//mario2 = new Mario(50,530);
-		//if(super.equals(mario))
-			//System.out.println("two marios\n\n");
+		goomba = new Goomba(400,459);
 		System.out.println(mario);
+		System.out.println(goomba);
 		addKeyListener(new AL());
 		setFocusable(true);
 		ImageIcon i = new ImageIcon("C:/Users/Marius/Desktop/background.png");
@@ -36,11 +36,15 @@ public final class Board extends JPanel implements ActionListener { //final
 		super.paint(g);
 		Graphics2D graphics2d = (Graphics2D) g;
 		
-		graphics2d.drawImage(background, 1145-mario.diry, 0, null);
-		graphics2d.drawImage(background, 1145-mario.diry+1145, 0, null);
-		graphics2d.drawImage(background, 1145-mario.diry-1145, 0, null);	
-		graphics2d.drawImage(mario.getImage(), 0, mario.getY(), null);
+		graphics2d.drawImage(background, 0, 0, null);
 		
+		
+		//judantis backgroundas
+		//graphics2d.drawImage(background, 1145-mario.diry, 0, null);
+		//graphics2d.drawImage(background, 1145-mario.diry+1145, 0, null);
+		//graphics2d.drawImage(background, 1145-mario.diry-1145, 0, null);	
+		graphics2d.drawImage(mario.getImage(), mario.getX(), mario.getY(), null);
+		graphics2d.drawImage(goomba.getImage(), goomba.getX(), goomba.getY(), null);
 		/*
 		 *moving screen + moving mario
 		//graphics2d.drawImage(background, 1145-mario.diry, 0, null); 

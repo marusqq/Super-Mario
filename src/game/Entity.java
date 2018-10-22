@@ -1,6 +1,6 @@
 package game;
 
-public class Entity {
+public class  Entity {
 	public int x, y, dirx, diry;
 	public int gravity, speed;
 	boolean friendly;
@@ -19,19 +19,18 @@ public class Entity {
 		
 	}
 	
-	public void setSpeed(int s) {
+	public final void setSpeed(int s) {
 		this.speed = s;
 	}
 	
-	/*public boolean equals(Entity entity) {
-		if(entity.name == entity1.name && entity.speed == entity1.speed 
-				&& entity.gravity == entity1.gravity && entity.friendly == entity1.friendly)
-			return true;
-		else
-			return false;
-	}*/
 	
-	public void changeName (String s) {
+	public final void setName (String s) {
 		this.name = s;
 	}
+	
+	public final void setFriendly (boolean f) {
+		this.friendly = f;
+	}
+	
+	
 }
