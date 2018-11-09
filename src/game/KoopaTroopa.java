@@ -1,34 +1,38 @@
 /* @author Marius
  * version 1.0
- * Vieno is monstru klase
+ * viena is monstru klasiu
  */
 
 
 package game;
 
-import java.awt.*;
+import java.awt.Image;
+
 import javax.swing.ImageIcon;
 
-public class Goomba extends Entity {
+public class KoopaTroopa extends Entity {
+
 	Entity entity;
-	ImageIcon goombaIcon = new ImageIcon ("C:/Users/Marius/Desktop/goomba.png");
-	public Goomba() {
+	ImageIcon koopaTroopaLeft = new ImageIcon ("C:/Users/Marius/Desktop/koopatroopaleft.png");
+	ImageIcon koopaTroopaRight = new ImageIcon ("C:/Users/Marius/Desktop/koopatrooparight.png");
+	
+	public KoopaTroopa() {
 		super();
 		super.setSpeed(0);
 		super.setFriendly(false);
-		super.setName("Goomba");
+		super.setName("KoopaTroopa");
 		gravity = 400;
-		image = goombaIcon.getImage();
+		image = koopaTroopaLeft.getImage();
 		
 	}
 	
-	public Goomba(int x, int y) {
+	public KoopaTroopa(int x, int y) {
 		super();
 		super.setSpeed(0);
 		super.setFriendly(false);
-		super.setName("Goomba");
+		super.setName("KoopaTroopa");
 		gravity = 400;
-		image = goombaIcon.getImage();
+		image = koopaTroopaLeft.getImage();
 		
 		this.x = x;
 		this.y = y;	
@@ -65,7 +69,6 @@ public class Goomba extends Entity {
 	}
 	
 	
-	
 	/*public boolean marioXY() {
 		return false;
 	}
@@ -76,5 +79,6 @@ public class Goomba extends Entity {
 				+ "  friendly: " + friendly;
 	}
 	
+
 
 }

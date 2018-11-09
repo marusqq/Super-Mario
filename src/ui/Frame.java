@@ -1,11 +1,17 @@
+/* @author Marius
+ * version 1.0
+ * Klase ekrano sukurimui
+ */
+
+
 package ui;
 
 import javax.swing.*;
 
 public class Frame {
 	
-	public final int LENGTH = 1152;
-	public final int WIDTH = 648;
+	public static final int LENGTH = 1152;
+	public static final int WIDTH = 648;
 	
 	public static void main(String[] args) {
 		new Frame();

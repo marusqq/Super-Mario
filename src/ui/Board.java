@@ -1,3 +1,10 @@
+/* @author Marius
+ * version 1.0
+ * Klase piesimui i frame
+ */
+
+
+
 package ui;
 
 import java.awt.*;
@@ -5,20 +12,30 @@ import java.awt.event.*;
 import javax.swing.*;
 import game.Mario;
 import game.Goomba;
+import game.KoopaTroopa;
 
 @SuppressWarnings("serial")
 public final class Board extends JPanel implements ActionListener { //final
-
-	Mario mario;
+	
 	Goomba goomba;
-	public Image background;
+	Mario mario;
+	KoopaTroopa koopa;
+	//Entity goomba = new Entity();
+	//Entity koopa = new Entity();
+	//Entity mario = new Entity();
+	
 	Timer time;
+	public Image background;
+	
 	
 	public Board() {
 		mario = new Mario(0,530);
-		goomba = new Goomba(400,459);
+		goomba = new Goomba(400,555);
+		koopa = new KoopaTroopa(600, 490);
+		
 		System.out.println(mario);
 		System.out.println(goomba);
+		System.out.println(koopa);
 		addKeyListener(new AL());
 		setFocusable(true);
 		ImageIcon i = new ImageIcon("C:/Users/Marius/Desktop/background.png");
@@ -38,13 +55,16 @@ public final class Board extends JPanel implements ActionListener { //final
 		
 		graphics2d.drawImage(background, 0, 0, null);
 		
+		graphics2d.drawImage(mario.getImage(), mario.getX(), mario.getY(), null);
+		graphics2d.drawImage(goomba.getImage(), goomba.getX(), goomba.getY(), null);
+		graphics2d.drawImage(koopa.getImage(), koopa.getX(), koopa.getY(), null);
+		
+		
 		
 		//judantis backgroundas
 		//graphics2d.drawImage(background, 1145-mario.diry, 0, null);
 		//graphics2d.drawImage(background, 1145-mario.diry+1145, 0, null);
 		//graphics2d.drawImage(background, 1145-mario.diry-1145, 0, null);	
-		graphics2d.drawImage(mario.getImage(), mario.getX(), mario.getY(), null);
-		graphics2d.drawImage(goomba.getImage(), goomba.getX(), goomba.getY(), null);
 		/*
 		 *moving screen + moving mario
 		//graphics2d.drawImage(background, 1145-mario.diry, 0, null); 

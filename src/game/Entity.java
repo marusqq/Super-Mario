@@ -1,18 +1,25 @@
+/* @author Marius
+ * version 1.0
+ * Tevine visu veikeju klase
+ */
+
+
+
 package game;
 
-public class  Entity {
-	public int x, y, dirx, diry;
+import java.awt.Image;
+import java.awt.event.KeyEvent;
+
+public abstract class Entity extends GameObject implements Movable {
+	public int dirx, diry;
 	public int gravity, speed;
 	boolean friendly;
 	String name;
-	Entity entity;
 	
 	
-	public Entity () {
-		x = 0;
-		y = 0;	
+	public Entity () {	
 		diry = 1145;
-		gravity = 800;
+		gravity = defaultGravity();
 		speed = 1;
 		friendly = true;
 		name = "";
@@ -32,5 +39,24 @@ public class  Entity {
 		this.friendly = f;
 	}
 	
+	public void move () {
+		x = x + dirx;
+	}
 	
+	public abstract int getX();
+		
+	public abstract int getY();
+
+	
+	public Image getImage() {
+		return image;
+	}
+	
+	public void keyPressed(KeyEvent press) {}
+	
+	public void keyReleased(KeyEvent press) {}
+	
+	public int getGravity() {
+		return gravity;
+	}
 }

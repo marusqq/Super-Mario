@@ -1,3 +1,8 @@
+/* @author Marius
+ * version 1.0
+ * Pagrindinio veikejo klase
+ */
+
 package game;
 
 import java.awt.*;
@@ -9,26 +14,25 @@ public class Mario extends Entity {
 
 	
 	public int diry;
-	Image mario;
 	ImageIcon playerFacingLeft = new ImageIcon("C:/Users/Marius/Desktop/marioleft.png"); 
     ImageIcon playerFacingRight = new ImageIcon("C:/Users/Marius/Desktop/marioright.png");
 	
 	public Mario() {
 		super();
-		super.setSpeed(1);
+		super.setSpeed(2);
 		super.setName("Mario");
-		mario = playerFacingRight.getImage();
+		gravity = 300;
+		image = playerFacingRight.getImage();
 		
 	}
 	
 		
 	public Mario(int x, int y) {
-		super();
-		super.setSpeed(1);
+		super(); 
+		super.setSpeed(2);
 		super.setName("Mario");
-		
-		mario = playerFacingRight.getImage();
-		
+		image = playerFacingRight.getImage();
+		gravity = 300;
 		this.x = x;
 		this.y = y;
 		
@@ -37,7 +41,8 @@ public class Mario extends Entity {
 	}
 	
 	
-	public final void move() { //final
+	public void move() { //final
+		//if(x > 0)
 		x = x + dirx;
 		diry = diry + dirx;
 	}
@@ -51,12 +56,12 @@ public class Mario extends Entity {
 		return y;
 	}
 	
-	public void setX(int X) {
-		this.x = X;
+	public void setX(int x) {
+		this.x = x;
 	}
 	
-	public void setY(int Y) {
-		this.y = Y;
+	public void setY(int y) {
+		this.y = y;
 	}
 	
 	public int getGravity () {
@@ -65,7 +70,11 @@ public class Mario extends Entity {
 	}
 	
 	public Image getImage() {
-		return mario;
+		return image;
+	}
+	
+	public int getSpeed() {
+		return speed;
 	}
 	
 	public String toString() {
@@ -78,14 +87,14 @@ public class Mario extends Entity {
 		//System.out.println(getX());
 		if(key == KeyEvent.VK_A) {
 			
-			mario = playerFacingLeft.getImage(); 
+			image = playerFacingLeft.getImage(); 
 			dirx = -speed;	
 		}
 			
 
 		if(key == KeyEvent.VK_D) {
 			
-			mario = playerFacingRight.getImage(); 
+			image = playerFacingRight.getImage(); 
 			dirx = speed;
 		}
 				
