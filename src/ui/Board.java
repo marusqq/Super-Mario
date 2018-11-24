@@ -1,4 +1,4 @@
-/* @author Marius
+/* @author Marius Pozniakovas
  * version 1.0
  * Klase piesimui i frame
  */
@@ -20,11 +20,9 @@ public final class Board extends JPanel implements ActionListener { //final
 	Goomba goomba;
 	Mario mario;
 	KoopaTroopa koopa;
-	//Entity goomba = new Entity();
-	//Entity koopa = new Entity();
-	//Entity mario = new Entity();
 	
 	Timer time;
+	
 	public Image background;
 	
 	
@@ -46,6 +44,8 @@ public final class Board extends JPanel implements ActionListener { //final
 	
 	public void actionPerformed(ActionEvent press) {
 		mario.move();
+		goomba.move();
+		koopa.move();
 		repaint();
 	}
 	
@@ -53,7 +53,7 @@ public final class Board extends JPanel implements ActionListener { //final
 		super.paint(g);
 		Graphics2D graphics2d = (Graphics2D) g;
 		
-		graphics2d.drawImage(background, 0, 0, null);
+		graphics2d.drawImage(background, 0-mario.diry, 0, null);
 		
 		graphics2d.drawImage(mario.getImage(), mario.getX(), mario.getY(), null);
 		graphics2d.drawImage(goomba.getImage(), goomba.getX(), goomba.getY(), null);
@@ -67,9 +67,10 @@ public final class Board extends JPanel implements ActionListener { //final
 		//graphics2d.drawImage(background, 1145-mario.diry-1145, 0, null);	
 		/*
 		 *moving screen + moving mario
+		 */
 		//graphics2d.drawImage(background, 1145-mario.diry, 0, null); 
 		//graphics2d.drawImage(mario.getImage(), mario.getX(), mario.getY(), null); 
-		*/
+		
 	}
 	
 	private class AL extends KeyAdapter {

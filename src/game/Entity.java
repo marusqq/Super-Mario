@@ -1,4 +1,4 @@
-/* @author Marius
+/* @author Marius Pozniakovas
  * version 1.0
  * Tevine visu veikeju klase
  */
@@ -8,9 +8,8 @@
 package game;
 
 import java.awt.Image;
-import java.awt.event.KeyEvent;
 
-public abstract class Entity extends GameObject implements Movable {
+public abstract class Entity extends GameObject implements Movable{
 	public int dirx, diry;
 	public int gravity, speed;
 	boolean friendly;
@@ -19,7 +18,7 @@ public abstract class Entity extends GameObject implements Movable {
 	
 	public Entity () {	
 		diry = 1145;
-		gravity = defaultGravity();
+		gravity = getDefaultGravity();
 		speed = 1;
 		friendly = true;
 		name = "";
@@ -39,24 +38,30 @@ public abstract class Entity extends GameObject implements Movable {
 		this.friendly = f;
 	}
 	
-	public void move () {
-		x = x + dirx;
+	public final void setGravity (int g) {
+		this.gravity = g;
 	}
 	
-	public abstract int getX();
-		
-	public abstract int getY();
-
+	public void move()
+	{
+		x = x + dirx;
+	}
 	
 	public Image getImage() {
 		return image;
 	}
 	
-	public void keyPressed(KeyEvent press) {}
-	
-	public void keyReleased(KeyEvent press) {}
-	
 	public int getGravity() {
 		return gravity;
 	}
+	
+	public int getSpeed() {
+		return speed;
+	}
+	
+	public String toString() {
+		return "Name: " + name + "\nx: " + x + "   y: " + y + "\nspeed:" + speed
+				+ "  friendly:" + friendly + "  gravity:" + gravity; 
+	}
+	
 }

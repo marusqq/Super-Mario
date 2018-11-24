@@ -1,4 +1,4 @@
-/* @author Marius
+/* @author Marius Pozniakovas
  * version 1.0
  * interfeisas judejimui
  */
@@ -10,7 +10,7 @@ public interface Movable extends Modifiable {
 	public int getGravity();
 	public int getSpeed();
 	
-	default int defaultGravity() {
+	default int getDefaultGravity() {
 		return 800;
 	}
         
