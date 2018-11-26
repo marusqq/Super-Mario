@@ -3,41 +3,34 @@
  * Pagrindinio veikejo klase
  */
 
-//pakeisti dizaina tiap, kad bent viena is baziniu klasiu turetu
-//bekonstruktoriu pagal nutylejima, turetu ir kita konstrukturiu. o tada isvestine
-//klase tuo kitu konstruktorium pasinaudotu
+//TODO super metodas ir konstruktorius
+//TODO delegavimas
 
-//prasmingai panaudoti interfeisus
-//iskelti getx, gety i bazine klase 
-
-//kitam kartui, super konstruktoriuje ir super metodas ir : prasmingai panaudoti
 package game;
 
 import java.awt.event.KeyEvent;
-
 import javax.swing.ImageIcon;
 
-public class Mario extends Entity {
+public class Mario extends Entity implements Movable {
 
-	
+	Goomba goombaCopy;
 	public int diry;
 	ImageIcon playerFacingLeft = new ImageIcon("C:/Users/Marius/Desktop/marioleft.png"); 
     ImageIcon playerFacingRight = new ImageIcon("C:/Users/Marius/Desktop/marioright.png");
 	
 	public Mario() {
-		//super();
-		super.setSpeed(10);
+		setSpeed(10);
 		setName("Mario");
-		gravity = 300;
+		setGravity(300);
 		image = playerFacingRight.getImage();
 		
 	}	
 	public Mario(int x, int y) {
-		//super(); 
-		setSpeed(2);
-		super.setName("Mario");
+		setSpeed(1);
+		setName("Mario");
+		setGravity(300);
+		
 		image = playerFacingRight.getImage();
-		gravity = 300;
 		this.x = x;
 		this.y = y;		
 	}
@@ -67,7 +60,7 @@ public class Mario extends Entity {
 			dirx = speed;
 		}
 				
-		//if(key == KeyEvent.VK_SPACE)
+		//if(key == KeyEvent.VK_SPACE) 
 			//jump();
 	}
 	

@@ -8,9 +8,8 @@ package game;
 
 import javax.swing.ImageIcon;
 
-public class KoopaTroopa extends Entity  {
+public class KoopaTroopa extends Entity implements Movable {
 	
-	//TODO delegates
 	//Mario mario = new Mario();
 	Goomba goomba = new Goomba();
 	ImageIcon koopaTroopaLeft = new ImageIcon ("C:/Users/Marius/Desktop/koopatroopaleft.png");
@@ -18,24 +17,20 @@ public class KoopaTroopa extends Entity  {
 	
 	public KoopaTroopa() {
 		super();
-		super.setSpeed(0);
-		super.setFriendly(false);
-		super.setName("KoopaTroopa");
-		gravity = getDefaultGravity();
+		setName("KoopaTroopa");
 		image = koopaTroopaLeft.getImage();
 		
 	}
 	
 	public KoopaTroopa(int x, int y) {
 		super();
-		super.setSpeed(0);
-		super.setFriendly(false);
-		super.setName("KoopaTroopa");
-		gravity = 400;
+		setName("KoopaTroopa");
 		image = koopaTroopaLeft.getImage();
 		
 		this.x = x;
 		this.y = y;	
 		
 	}
+	
+	
 }

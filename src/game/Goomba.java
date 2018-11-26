@@ -8,34 +8,24 @@ package game;
 
 import javax.swing.ImageIcon;
 
-public class Goomba extends Entity {
+public class Goomba extends Entity implements Movable {
 	Entity entity;
 	ImageIcon goombaIcon = new ImageIcon ("C:/Users/Marius/Desktop/goomba.png");
 	public Goomba() {
-		super();
-		super.setSpeed(0);
-		super.setFriendly(false);
-		super.setName("Goomba");
-		gravity = 400;
+		//super();
+		setName("Goomba");
 		image = goombaIcon.getImage();
 		
 	}
 	
 	public Goomba(int x, int y) {
 		super();
-		super.setSpeed(1);
-		super.setFriendly(false);
-		super.setName("Goomba");
-		gravity = 400;
+		setName("Goomba");
 		image = goombaIcon.getImage();
 		
 		this.x = x;
 		this.y = y;	
 		
-	}
-	
-	public void move() {
-		x = x - speed ;
 	}
 	
 	/*public boolean marioXY() {

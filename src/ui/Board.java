@@ -7,9 +7,18 @@
 
 package ui;
 
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
+
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import javax.swing.ImageIcon;
+import javax.swing.JPanel;
+import javax.swing.Timer;
+
 import game.Mario;
 import game.Goomba;
 import game.KoopaTroopa;
@@ -46,6 +55,16 @@ public final class Board extends JPanel implements ActionListener { //final
 		mario.move();
 		goomba.move();
 		koopa.move();
+		//try {
+		//	Thread.sleep(10);
+		//} catch (InterruptedException e) {
+		//	// TODO Auto-generated catch block
+		//	e.printStackTrace();
+		//}
+		if(goomba.getX() == mario.getX() + 60)
+			goomba.setSpeed(-2);
+		if(goomba.getX() == getWidth())
+			goomba.setSpeed(1);
 		repaint();
 	}
 	

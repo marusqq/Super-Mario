@@ -6,7 +6,20 @@
 package game;
 
 public interface Modifiable {
-	public void setX(int x);
-	public void setY(int y);
-	public void setSpeed(int speed);
+	void setSpeed(int s);
+	void setName(String s);
+	void setFriendly (boolean f);
+	void setGravity (int g);
+	
+	default int getDefaultGravity() {
+		return 800;
+	}
+	
+	default int getDefaultSpeed() {
+		return 2;
+	}
+	
+	default boolean getDefaultFriendly() {
+		return false;
+	}
 }

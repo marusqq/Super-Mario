@@ -5,13 +5,8 @@
 
 package game;
 
-public interface Movable extends Modifiable {
-	public void move();
-	public int getGravity();
-	public int getSpeed();
+public interface Movable  {
 	
-	default int getDefaultGravity() {
-		return 800;
-	}
+	public void move();
         
 }

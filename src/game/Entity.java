@@ -9,7 +9,7 @@ package game;
 
 import java.awt.Image;
 
-public abstract class Entity extends GameObject implements Movable{
+public abstract class Entity extends GameObject implements Modifiable{
 	public int dirx, diry;
 	public int gravity, speed;
 	boolean friendly;
@@ -19,32 +19,31 @@ public abstract class Entity extends GameObject implements Movable{
 	public Entity () {	
 		diry = 1145;
 		gravity = getDefaultGravity();
-		speed = 1;
-		friendly = true;
-		name = "";
-		
+		speed = getDefaultSpeed();
+		friendly = getDefaultFriendly();
+		name = "Bad Guy";
 	}
 	
-	public final void setSpeed(int s) {
+	public void setSpeed(int s) {
 		this.speed = s;
 	}
 	
 	
-	public final void setName (String s) {
+	public void setName (String s) {
 		this.name = s;
 	}
 	
-	public final void setFriendly (boolean f) {
+	public void setFriendly (boolean f) {
 		this.friendly = f;
 	}
 	
-	public final void setGravity (int g) {
+	public void setGravity (int g) {
 		this.gravity = g;
 	}
 	
 	public void move()
 	{
-		x = x + dirx;
+		x = x - speed;
 	}
 	
 	public Image getImage() {
