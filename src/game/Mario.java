@@ -11,7 +11,7 @@ package game;
 import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 
-public class Mario extends Entity implements Movable {
+public class Mario extends Entity implements Movable, Positionable {
 
 	Goomba goombaCopy;
 	public int diry;

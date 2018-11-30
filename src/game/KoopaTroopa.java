@@ -8,7 +8,7 @@ package game;
 
 import javax.swing.ImageIcon;
 
-public class KoopaTroopa extends Entity implements Movable {
+public class KoopaTroopa extends Entity implements Movable, Positionable {
 	
 	//Mario mario = new Mario();
 	Goomba goomba = new Goomba();
@@ -16,14 +16,12 @@ public class KoopaTroopa extends Entity implements Movable {
 	ImageIcon koopaTroopaRight = new ImageIcon ("C:/Users/Marius/Desktop/koopatrooparight.png");
 	
 	public KoopaTroopa() {
-		super();
 		setName("KoopaTroopa");
 		image = koopaTroopaLeft.getImage();
 		
 	}
 	
 	public KoopaTroopa(int x, int y) {
-		super();
 		setName("KoopaTroopa");
 		image = koopaTroopaLeft.getImage();
 		
