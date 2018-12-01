@@ -75,9 +75,9 @@ public final class Board extends JPanel implements ActionListener { //final
 		koopa.move();
 		try {
 			Thread.sleep(1);
-		} catch (InterruptedException e) {
+		} catch (InterruptedException exc) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			exc.printStackTrace();
 		}
 		
 		//goomba movement collision
@@ -98,7 +98,7 @@ public final class Board extends JPanel implements ActionListener { //final
 		super.paint(g);
 		Graphics2D graphics2d = (Graphics2D) g;
 		
-		graphics2d.drawImage(background, 0-(mario.diry/2), 0, null);
+		graphics2d.drawImage(background, 0-mario.diry, 0, null);
 		
 		graphics2d.drawImage(mario.getImage(), mario.getX(), mario.getY(), null);
 		graphics2d.drawImage(goomba.getImage(), goomba.getX(), goomba.getY(), null);

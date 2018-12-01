@@ -1,11 +1,14 @@
+/* @author Marius Pozniakovas
+ * version 1.0
+ * zaidimo exceptiono klase
+ */
+
 package exceptions;
 
 public class GameException extends Exception {
 
-	/**
-	 * 
-	 */
-	protected int id;
+	
+
 	protected String message;
 	private static final long serialVersionUID = 1L;
 

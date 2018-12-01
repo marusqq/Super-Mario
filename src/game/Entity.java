@@ -41,8 +41,7 @@ public abstract class Entity extends GameObject implements Modifiable, Movable{
 		this.gravity = g;
 	}
 	
-	public void move()
-	{
+	public void move(){
 		x = x - speed;
 	}
 	

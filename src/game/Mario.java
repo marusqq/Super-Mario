@@ -8,19 +8,21 @@
 
 package game;
 
-//import exceptions.OutOfBoundsPositionException;
 import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 
-public class Mario extends Entity implements Movable{
+import exceptions.OutOfBoundsPositionException;
+
+public class Mario extends Entity implements Movable {
 
 	Goomba goombaCopy; 
 	public int diry;
+	public boolean jumping;
 	ImageIcon playerFacingLeft = new ImageIcon("C:/Users/Marius/Desktop/marioleft.png"); 
     ImageIcon playerFacingRight = new ImageIcon("C:/Users/Marius/Desktop/marioright.png");
 	
 	public Mario() {
-		setSpeed(10);
+		setSpeed(2);
 		setName("Mario");
 		setGravity(300);
 		image = playerFacingRight.getImage();
@@ -37,13 +39,17 @@ public class Mario extends Entity implements Movable{
 	}
 	
 	public void move() { //final
-		//try {
+		try {
 			x = x + dirx;
 			diry = diry + dirx;
-		//}
-		//catch (OutOfBoundsPositionException exc) {
-		//	System.out.println("Out of bounds" + exc);
-		//}
+			if(x==100)
+				throw new OutOfBoundsPositionException("at x = 100");
+			
+			} 
+		catch (OutOfBoundsPositionException exc) {
+			System.out.print("Mario: " + exc.getMessage());	
+			}
+		
 	}
 	
 	public int getGravity () {
@@ -66,11 +72,14 @@ public class Mario extends Entity implements Movable{
 			dirx = speed;
 		}
 				
-		//if(key == KeyEvent.VK_SPACE) 
-			//jump();
+		if(key == KeyEvent.VK_SPACE) 
+			jump();
 	}
 	
 	
+	public void jump() {
+		System.out.println("Jumping is not yet available");
+	}
 	public void keyReleased(KeyEvent press) {
 		int key = press.getKeyCode();
 		if(key == KeyEvent.VK_A)
