@@ -8,12 +8,13 @@
 
 package game;
 
+//import exceptions.OutOfBoundsPositionException;
 import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 
-public class Mario extends Entity implements Movable, Positionable {
+public class Mario extends Entity implements Movable{
 
-	Goomba goombaCopy;
+	Goomba goombaCopy; 
 	public int diry;
 	ImageIcon playerFacingLeft = new ImageIcon("C:/Users/Marius/Desktop/marioleft.png"); 
     ImageIcon playerFacingRight = new ImageIcon("C:/Users/Marius/Desktop/marioright.png");
@@ -36,8 +37,13 @@ public class Mario extends Entity implements Movable, Positionable {
 	}
 	
 	public void move() { //final
-		x = x + dirx;
-		diry = diry + dirx;
+		//try {
+			x = x + dirx;
+			diry = diry + dirx;
+		//}
+		//catch (OutOfBoundsPositionException exc) {
+		//	System.out.println("Out of bounds" + exc);
+		//}
 	}
 	
 	public int getGravity () {

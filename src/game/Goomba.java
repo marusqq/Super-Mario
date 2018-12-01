@@ -8,7 +8,7 @@ package game;
 
 import javax.swing.ImageIcon;
 
-public class Goomba extends Entity implements Movable, Positionable {
+public class Goomba extends Entity implements Movable {
 	Entity entity;
 	ImageIcon goombaIcon = new ImageIcon ("C:/Users/Marius/Desktop/goomba.png");
 	public Goomba() {

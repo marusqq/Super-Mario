@@ -8,7 +8,7 @@ package game;
 
 import javax.swing.ImageIcon;
 
-public class KoopaTroopa extends Entity implements Movable, Positionable {
+public class KoopaTroopa extends Entity implements Movable {
 	
 	//Mario mario = new Mario();
 	Goomba goomba = new Goomba();

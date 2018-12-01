@@ -9,7 +9,7 @@ package game;
 
 import java.awt.Image;
 
-public abstract class Entity extends GameObject implements Modifiable{
+public abstract class Entity extends GameObject implements Modifiable, Movable{
 	public int dirx, diry;
 	public int gravity, speed;
 	boolean friendly;

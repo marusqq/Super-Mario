@@ -31,35 +31,35 @@ public final class Board extends JPanel implements ActionListener { //final
 	Goomba goomba;
 	Mario mario;
 	
-	/*
-	Entity marioE;
-	Entity goombaE;
-	Entity koopaE;
+	private Entity marioMovable;
+	private Entity goombaMovable;
+	private Entity koopaMovable;
 	
-	Positionable[] positionableEntities = new Positionable[3];
-	    mario = new Mario;
-	    goomba = new Goomba;
-	    koopa = new KoopaTroopa;
-	    
+	Positionable marioPositionable;
+	Positionable goombaPositionable;
+	Positionable koopaPositionable;
 	
-	private Positionable koopaP;
-	private Positionable marioP;
-	private Positionable goombaP;
-	*/
+	Entity[] movableEntities = { marioMovable, goombaMovable, koopaMovable } ;
+	Positionable[] positionableEntities = { marioPositionable, goombaPositionable, koopaPositionable } ;
+	
+	
+
 	Timer time;
 	public Image background;
-	//private Entity[] movableEntities = {marioE, koopaE, goombaE };
-	//private Positionable[] positionableEntities =  {marioP, koopaP, goombaP };
 	
 	
 	public Board() { 
 		koopa = new KoopaTroopa(600, 490);
 		goomba = new Goomba(400,555);
 		mario = new Mario(0,530);
-		
+
 		System.out.println(mario);
 		System.out.println(goomba);
 		System.out.println(koopa);
+		for(int i=0;i<3;i++)
+			System.out.println(movableEntities[i]);
+		for(int i=0;i<3;i++)
+			System.out.println(positionableEntities[i]);
 		
 		addKeyListener(new AL());
 		setFocusable(true);
@@ -98,7 +98,7 @@ public final class Board extends JPanel implements ActionListener { //final
 		super.paint(g);
 		Graphics2D graphics2d = (Graphics2D) g;
 		
-		graphics2d.drawImage(background, 0-mario.diry, 0, null);
+		graphics2d.drawImage(background, 0-(mario.diry/2), 0, null);
 		
 		graphics2d.drawImage(mario.getImage(), mario.getX(), mario.getY(), null);
 		graphics2d.drawImage(goomba.getImage(), goomba.getX(), goomba.getY(), null);

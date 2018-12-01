@@ -5,7 +5,7 @@
 
 package game;
 
-public interface Modifiable {
+public interface Modifiable{
 	void setSpeed(int s);
 	void setName(String s);
 	void setFriendly (boolean f);
