@@ -16,11 +16,12 @@ import exceptions.OutOfBoundsPositionException;
 public class Mario extends Entity implements Movable {
 
 	Goomba goombaCopy; 
-	public int diry;
+	public int dirBackground;
+	public int startingPoint;
 	public boolean jumping;
-	ImageIcon playerFacingLeft = new ImageIcon("C:/Users/Marius/Desktop/marioleft.png"); 
-    ImageIcon playerFacingRight = new ImageIcon("C:/Users/Marius/Desktop/marioright.png");
-	
+	ImageIcon playerFacingLeft = new ImageIcon("C:/Users/Marius/eclipse-workspace/Super Mario/resources/marioleft.png"); 
+    ImageIcon playerFacingRight = new ImageIcon("C:/Users/Marius/eclipse-workspace/Super Mario/resources/marioright.png");
+    
 	public Mario() {
 		setSpeed(2);
 		setName("Mario");
@@ -28,23 +29,23 @@ public class Mario extends Entity implements Movable {
 		image = playerFacingRight.getImage();
 		
 	}	
+	@SuppressWarnings("unused")
 	public Mario(int x, int y) {
-		setSpeed(1);
+		setSpeed(3);
 		setName("Mario");
 		setGravity(300);
-		
+		int startingPoint = x;
 		image = playerFacingRight.getImage();
 		this.x = x;
 		this.y = y;		
 	}
 	
-	public void move() { //final
+	public void move(){ //final
 		try {
 			x = x + dirx;
-			diry = diry + dirx;
-			if(x==100)
-				throw new OutOfBoundsPositionException("at x = 100");
-			
+			dirBackground = dirBackground + dirx;
+			if(x<0)
+				throw new OutOfBoundsPositionException("OutOfBoundsException\n");
 			} 
 		catch (OutOfBoundsPositionException exc) {
 			System.out.print("Mario: " + exc.getMessage());	
@@ -76,6 +77,9 @@ public class Mario extends Entity implements Movable {
 			jump();
 	}
 	
+	public int getStartingPoint() {
+		return startingPoint;
+	}
 	
 	public void jump() {
 		System.out.println("Jumping is not yet available");

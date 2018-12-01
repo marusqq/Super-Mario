@@ -10,7 +10,7 @@ import javax.swing.ImageIcon;
 
 public class Goomba extends Entity implements Movable {
 	Entity entity;
-	ImageIcon goombaIcon = new ImageIcon ("C:/Users/Marius/Desktop/goomba.png");
+	ImageIcon goombaIcon = new ImageIcon ("C:/Users/Marius/eclipse-workspace/Super Mario/resources/goomba.png");
 	public Goomba() {
 		setName("Goomba");
 		image = goombaIcon.getImage();

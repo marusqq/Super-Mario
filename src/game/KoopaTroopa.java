@@ -10,10 +10,9 @@ import javax.swing.ImageIcon;
 
 public class KoopaTroopa extends Entity implements Movable {
 	
-	//Mario mario = new Mario();
 	Goomba goomba = new Goomba();
-	ImageIcon koopaTroopaLeft = new ImageIcon ("C:/Users/Marius/Desktop/koopatroopaleft.png");
-	ImageIcon koopaTroopaRight = new ImageIcon ("C:/Users/Marius/Desktop/koopatrooparight.png");
+	ImageIcon koopaTroopaLeft = new ImageIcon ("C:/Users/Marius/eclipse-workspace/Super Mario/resources/koopatroopaleft.png");
+	ImageIcon koopaTroopaRight = new ImageIcon ("C:/Users/Marius/eclipse-workspace/Super Mario/resources/koopatrooparight.png");
 	
 	public KoopaTroopa() {
 		setName("KoopaTroopa");

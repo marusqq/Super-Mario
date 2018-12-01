@@ -10,14 +10,13 @@ package game;
 import java.awt.Image;
 
 public abstract class Entity extends GameObject implements Modifiable, Movable{
-	public int dirx, diry;
+	public int dirx;
 	public int gravity, speed;
 	boolean friendly;
 	String name;
 	
 	
-	public Entity () {	
-		diry = 1145;
+	public Entity () {
 		gravity = getDefaultGravity();
 		speed = getDefaultSpeed();
 		friendly = getDefaultFriendly();

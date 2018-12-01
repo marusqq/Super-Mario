@@ -51,7 +51,7 @@ public final class Board extends JPanel implements ActionListener { //final
 	public Board() { 
 		koopa = new KoopaTroopa(600, 490);
 		goomba = new Goomba(400,555);
-		mario = new Mario(0,530);
+		mario = new Mario(40,530);
 
 		System.out.println(mario);
 		System.out.println(goomba);
@@ -63,7 +63,7 @@ public final class Board extends JPanel implements ActionListener { //final
 		
 		addKeyListener(new AL());
 		setFocusable(true);
-		ImageIcon i = new ImageIcon("C:/Users/Marius/Desktop/background.png");
+		ImageIcon i = new ImageIcon("C:/Users/Marius/eclipse-workspace/Super Mario/resources/background.png");
 		background = i.getImage();
 		time = new Timer(1, this);
 		time.start();	
@@ -97,21 +97,26 @@ public final class Board extends JPanel implements ActionListener { //final
 	public void paint (Graphics g) {
 		super.paint(g);
 		Graphics2D graphics2d = (Graphics2D) g;
+	
+		graphics2d.drawImage(background, 0-mario.dirBackground, 0, null);
+		graphics2d.drawImage(background, (Frame.LENGTH-10)-mario.dirBackground, 0, null);
+		graphics2d.drawImage(background, 2*(Frame.LENGTH-10)-mario.dirBackground, 0, null);
+		graphics2d.drawImage(background, 3*(Frame.LENGTH-10)-mario.dirBackground, 0, null);
+		graphics2d.drawImage(background, 4*(Frame.LENGTH-10)-mario.dirBackground, 0, null);
 		
-		graphics2d.drawImage(background, 0-mario.diry, 0, null);
-		
-		graphics2d.drawImage(mario.getImage(), mario.getX(), mario.getY(), null);
+		graphics2d.drawImage(mario.getImage(), mario.getStartingPoint(), mario.getY(), null);
 		graphics2d.drawImage(goomba.getImage(), goomba.getX(), goomba.getY(), null);
 		graphics2d.drawImage(koopa.getImage(), koopa.getX(), koopa.getY(), null);
 		
 		
 		
-		//judantis backgroundas
-		//graphics2d.drawImage(background, 1145-mario.diry, 0, null);
-		//graphics2d.drawImage(background, 1145-mario.diry+1145, 0, null);
-		//graphics2d.drawImage(background, 1145-mario.diry-1145, 0, null);	
-		/*
-		 *moving screen + moving mario
+		//both moving
+
+		//graphics2d.drawImage(background, 0-(Frame.LENGTH-10)-mario.dirBackground, 0, null);
+		//graphics2d.drawImage(background, 0-mario.dirBackground, 0, null);
+		//graphics2d.drawImage(background, count*(Frame.LENGTH-10)-mario.dirBackground, 0, null);
+	
+		/*moving screen + moving mario
 		 */
 		//graphics2d.drawImage(background, 1145-mario.diry, 0, null); 
 		//graphics2d.drawImage(mario.getImage(), mario.getX(), mario.getY(), null); 
