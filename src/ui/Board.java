@@ -20,10 +20,10 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 import game.Mario;
-import game.Entity;
 import game.Goomba;
 import game.KoopaTroopa;
 import game.Positionable;
+import game.Entity;
 
 @SuppressWarnings("serial")
 public final class Board extends JPanel implements ActionListener { //final
@@ -31,20 +31,21 @@ public final class Board extends JPanel implements ActionListener { //final
 	Goomba goomba;
 	Mario mario;
 	
+	/*
 	Entity marioE;
 	Entity goombaE;
 	Entity koopaE;
 	
 	Positionable[] positionableEntities = new Positionable[3];
-	    positionableEntities[0] = new Mario;
-	    positionableEntities[1] = new Goomba;
-	    positionableEntities[2] = new KoopaTroopa;
+	    mario = new Mario;
+	    goomba = new Goomba;
+	    koopa = new KoopaTroopa;
 	    
 	
 	private Positionable koopaP;
 	private Positionable marioP;
 	private Positionable goombaP;
-	
+	*/
 	Timer time;
 	public Image background;
 	//private Entity[] movableEntities = {marioE, koopaE, goombaE };
@@ -69,27 +70,27 @@ public final class Board extends JPanel implements ActionListener { //final
 	}
 	
 	public void actionPerformed(ActionEvent press) {
-		movableEntities[0].move();
-		movableEntities[1].move();
-		movableEntities[2].move();
+		mario.move();
+		goomba.move();
+		koopa.move();
 		try {
-			Thread.sleep(100);
+			Thread.sleep(1);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 		//goomba movement collision
-		if(positionableEntities[1].getX() == positionableEntities[0].getX() + 60)
-			movableEntities[1].setSpeed(-2);
-		if(positionableEntities[1].getX() == getWidth())
-			movableEntities[1].setSpeed(2);
+		if(goomba.getX() == mario.getX() + 60)
+			goomba.setSpeed(-2);
+		if(goomba.getX() == getWidth())
+			goomba.setSpeed(2);
 		
 		//koopa movement collision
-		if(positionableEntities[2].getX() == positionableEntities[0].getX() + 60)
-			movableEntities[2].setSpeed(-1);
-		if(positionableEntities[2].getX() == getWidth())
-			movableEntities[2].setSpeed(1);
+		if(koopa.getX() == mario.getX() + 60)
+			koopa.setSpeed(-1);
+		if(koopa.getX() == getWidth())
+			koopa.setSpeed(1);
 		repaint();
 	}
 	
@@ -99,9 +100,9 @@ public final class Board extends JPanel implements ActionListener { //final
 		
 		graphics2d.drawImage(background, 0-mario.diry, 0, null);
 		
-		graphics2d.drawImage(positionableEntities[0].getImage(), positionableEntities[0].getX(), positionableEntities[0].getY(), null);
-		graphics2d.drawImage(positionableEntities[1].getImage(), positionableEntities[1].getX(), positionableEntities[1].getY(), null);
-		graphics2d.drawImage(positionableEntities[2].getImage(), positionableEntities[2].getX(), positionableEntities[2].getY(), null);
+		graphics2d.drawImage(mario.getImage(), mario.getX(), mario.getY(), null);
+		graphics2d.drawImage(goomba.getImage(), goomba.getX(), goomba.getY(), null);
+		graphics2d.drawImage(koopa.getImage(), koopa.getX(), koopa.getY(), null);
 		
 		
 		
