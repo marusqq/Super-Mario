@@ -1,6 +1,7 @@
 /* @author Marius Pozniakovas
  * version 1.0
  * Vieno is monstru klase
+ * mushroom monster class
  */
 
 

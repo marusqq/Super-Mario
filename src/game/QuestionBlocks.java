@@ -1,6 +1,7 @@
 /* @author Marius Pozniakovas
  * version 1.0
  * blokai kurie ismusant is apacios ismeta treasure
+ * blocks which give something when hit from beneath
  */
 
 

@@ -1,6 +1,7 @@
 /* @author Marius
  * version 1.0
  * interfeisas keisti koordinates ir greiti
+ * interface to change coordinates and speed
  */
 
 package game;

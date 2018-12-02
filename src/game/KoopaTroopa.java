@@ -1,6 +1,7 @@
 /* @author Marius Pozniakovas
  * version 1.0
  * viena is monstru klase
+ * turtle monster class
  */
 
 

@@ -1,6 +1,7 @@
 /* @author Marius Pozniakovas
  * version 1.0
  * zaidimo exceptiono klase
+ * game exceptions class
  */
 
 package exceptions;

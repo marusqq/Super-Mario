@@ -1,6 +1,7 @@
 /* @author Marius
  * version 1.0
  * Klase ekrano sukurimui
+ * class for creating the frame in which the game is painted
  */
 
 

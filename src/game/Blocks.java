@@ -1,6 +1,7 @@
 /* @author Marius Pozniakovas
  * version 1.0
  * nesunaikinami blokai, kurie laikosi ore
+ * indestructible blocks which remain in the air
  */
 
 

@@ -1,3 +1,9 @@
+/* @author Marius Pozniakovas
+ * version 1.0
+ * klase naudojama leisti garsui
+ * class for playing audio
+ */
+
 package sound;
 
 import java.net.MalformedURLException;

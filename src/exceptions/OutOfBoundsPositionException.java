@@ -1,6 +1,7 @@
 /* @author Marius Pozniakovas
  * version 1.0
  * viena iš imanomu exceptionu klase
+ * one of the possible exceptions class
  */
 
 package exceptions;

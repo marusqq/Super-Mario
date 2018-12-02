@@ -1,6 +1,7 @@
 /* @author Marius Pozniakovas
  * version 1.0
  * interfeisas skirtas gauti x ir y
+ * interface to set x,y and to get x,y
  */
 
 

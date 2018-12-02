@@ -1,6 +1,7 @@
 /* @author Marius Pozniakovas
  * version 1.0
  * pagrindine zaidimo klase, kuri valdo viska
+ * main gameobject class which is a parent to every class in game package
  */
 
 package game;

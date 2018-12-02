@@ -1,10 +1,9 @@
 /* @author Marius Pozniakovas
  * version 1.0
  * Pagrindinio veikejo klase
+ * main mario class
  */
 
-//TODO super metodas ir konstruktorius
-//TODO delegavimas
 
 package game;
 

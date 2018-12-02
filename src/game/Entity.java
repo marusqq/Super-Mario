@@ -1,6 +1,7 @@
 /* @author Marius Pozniakovas
  * version 1.0
  * Tevine visu veikeju klase
+ * all the moving character class
  */
 
 

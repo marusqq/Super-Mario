@@ -1,6 +1,7 @@
 /* @author Marius Pozniakovas
  * version 1.0
  * Klase piesimui i frame
+ * class for painthing everything to frame
  */
 
 
