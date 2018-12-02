@@ -29,12 +29,4 @@ public class Frame {
 		frame.setResizable(false);
 		frame.setLocationRelativeTo(null);
 	}
-	
-	public int getL() {
-		return LENGTH;
-	}
-	
-	public int getW() {
-		return WIDTH;
-	}
 }

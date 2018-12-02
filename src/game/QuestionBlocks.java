@@ -11,7 +11,7 @@ import javax.swing.ImageIcon;
 
 public class QuestionBlocks extends Blocks {
 
-	ImageIcon questionblockIcon = new ImageIcon ("C:/Users/Marius/eclipse-workspace/Super Mario/resources/questionblock.png");
+	ImageIcon questionblockIcon = new ImageIcon ("C:/Users/Marius/eclipse-workspace/Super-Mario/resources/questionblock.png");
 	public QuestionBlocks() {
 		super();
 		image = questionblockIcon.getImage();

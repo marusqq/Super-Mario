@@ -21,10 +21,10 @@ public class Mario extends Entity implements Movable {
 	public int dirBackground;
 	public int startingPoint;
 	public boolean jumping;
-	ImageIcon playerFacingLeft = new ImageIcon("C:/Users/Marius/eclipse-workspace/Super Mario/resources/marioleft.png"); 
-    ImageIcon playerFacingRight = new ImageIcon("C:/Users/Marius/eclipse-workspace/Super Mario/resources/marioright.png");
-    ImageIcon marioSuperImageLeft = new ImageIcon ("C:/Users/Marius/eclipse-workspace/Super Mario/resources/supermarioleft.png");
-    ImageIcon marioSuperImageRight = new ImageIcon ("C:/Users/Marius/eclipse-workspace/Super Mario/resources/supermarioright.png");
+	ImageIcon playerFacingLeft = new ImageIcon("C:/Users/Marius/eclipse-workspace/Super-Mario/resources/marioleft.png"); 
+    ImageIcon playerFacingRight = new ImageIcon("C:/Users/Marius/eclipse-workspace/Super-Mario/resources/marioright.png");
+    ImageIcon marioSuperImageLeft = new ImageIcon ("C:/Users/Marius/eclipse-workspace/Super-Mario/resources/supermarioleft.png");
+    ImageIcon marioSuperImageRight = new ImageIcon ("C:/Users/Marius/eclipse-workspace/Super-Mario/resources/supermarioright.png");
     
 	public Mario() {
 		setSpeed(1);

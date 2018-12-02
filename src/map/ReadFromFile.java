@@ -28,16 +28,15 @@ public class ReadFromFile {
 	
 	public ReadFromFile() throws BadFileException, FileNotFoundException {
 		
-		File file = new File("C:/Users/Marius/eclipse-workspace/Super Mario/map/blocks.txt"); 
-		System.out.println("2");
+		File file = new File("C:/Users/Marius/eclipse-workspace/Super-Mario/map/blocks.txt"); 
 		Scanner sc = new Scanner(file); 
 		while(sc.hasNext()) {
-			System.out.println("i have next in while");
 			
 			if(sc.hasNext()) {
 				input = sc.next();
+				System.out.println(input);
 				
-				if(input == "B") {
+				if(input.equals("B")) {
 					blockCount++;
 					
 					if(sc.hasNextInt()) {
@@ -50,19 +49,19 @@ public class ReadFromFile {
 							}
 						
 						else {
-							new BadFileException ("No Y coordinate after B\n");
-							break;
+							sc.close();
+							throw new BadFileException ("No Y coordinate after B\n");
 						}
 					}
 					
 					else {
-						new BadFileException ("No X coordinate after B\n");
-						break;
+						sc.close();
+						throw new BadFileException ("No X coordinate after B\n");
 					}
 					
 				}
 				
-				else if(input == "QB") {
+				else if(input.equals("QB")) {
 					qBlockCount++;
 					
 					if(sc.hasNextInt()) {
@@ -76,25 +75,24 @@ public class ReadFromFile {
 						}
 						
 						else {
-							new BadFileException ("No Y after X in QB\n");
-							break;
+							sc.close();
+							throw new BadFileException ("No Y after X in QB\n");
 						}
 					}
 					
 					else {
-						new BadFileException ("No X after QB\n");
-						break;
+						sc.close();
+						throw new BadFileException ("No X after QB\n");
 					}
 				}
 				else {
-					System.out.println("4");
-					new BadFileException ("No B or QB after newline\n");
-					break;
+					sc.close();
+					throw new BadFileException ("No B or QB after newline\n");
 				}
 			}
 			else {
-				new BadFileException ("No input in map file\n");
-				break;
+				sc.close();
+				throw new BadFileException ("No input in map file\n");
 			}
 		}
 		sc.close();
@@ -123,8 +121,5 @@ public class ReadFromFile {
 	public ArrayList<Integer> getArrayQBlocksY () {
 		return qBlocksY;
 	}
-	
-//	public int[] getBlocksX () {
-//		return blocksX;
-//	}
+
 }

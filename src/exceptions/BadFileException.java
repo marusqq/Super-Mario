@@ -8,7 +8,7 @@ package exceptions;
 
 public class BadFileException extends Exception{
 
-	String message;
+	String message = "BadFileException";
 	private static final long serialVersionUID = 1L;
 	
 	public BadFileException() {

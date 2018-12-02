@@ -15,6 +15,7 @@ public class GameException extends Exception {
 
 	public GameException() {
 		super();
+		System.out.println("GameException: GameLogic has been broken. Goob Job!");
 	}
 
 	public GameException(String message) {

@@ -60,7 +60,7 @@ public final class Board extends JPanel implements ActionListener { //final
 	Entity[] movableEntities = { marioMovable, goombaMovable, koopaMovable } ; //array from fields(45-47 line)
 	Positionable[] positionableEntities = { marioPositionable, goombaPositionable, koopaPositionable } ; //array from fields (48-50 line)
 	
-	ImageIcon i = new ImageIcon("C:/Users/Marius/eclipse-workspace/Super Mario/resources/background.png"); //background picture
+	ImageIcon i = new ImageIcon("C:/Users/Marius/eclipse-workspace/Super-Mario/resources/background.png"); //background picture
 
 	Timer time; //field for timer
 	public Image background;
@@ -79,21 +79,17 @@ public final class Board extends JPanel implements ActionListener { //final
 		try {
 			block = new Blocks();
 			qblock = new QuestionBlocks();
-			System.out.println("1");
 			mapBlocks = new ReadFromFile();
-			System.out.println("5");
 		} 
 		catch(BadFileException exc) {
-			System.out.println("I think I belong here\n");
-			System.out.print("Map file corrupted");
+			System.out.println(exc.getMessage() + '\n');
 		}
-		//FIXME: FIND WHY NO EXCEPTION IS CAUGHT
+		//TODO Make all the exception methods useful
 		catch(FileNotFoundException exc) {
-			System.out.println("I think I belong here\n");
-			System.out.print("File not found");
+			System.out.println("File not found");
 		}
 		catch (Exception e) {
-	         System.out.println("This has to be the world ending");
+	         System.out.println("Some weird exception. Seek help!");
 	    }
 		//try to read and from file and load structures
 		

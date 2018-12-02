@@ -12,7 +12,7 @@ import javax.swing.ImageIcon;
 
 public class Blocks extends Structures {
 
-	ImageIcon blockIcon = new ImageIcon ("C:/Users/Marius/eclipse-workspace/Super Mario/resources/block_dark.png");
+	ImageIcon blockIcon = new ImageIcon ("C:/Users/Marius/eclipse-workspace/Super-Mario/resources/block_dark.png");
 	
 	public Blocks() {
 		super();
