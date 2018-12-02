@@ -97,7 +97,7 @@ public class Mario extends Entity implements Movable {
 	public int getMarioMoving() {
 		return marioMoving;
 	}
-	
+	//CHECKME: Make SUPERMARIO exception VIABLE
 	public boolean isMarioSuperMario() {
 		return superMario;
 	}

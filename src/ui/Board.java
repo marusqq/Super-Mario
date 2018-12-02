@@ -23,7 +23,9 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 import exceptions.BadFileException;
+
 import sound.PlaySound;
+
 import game.Mario;
 import game.Goomba;
 import game.KoopaTroopa;
@@ -31,6 +33,7 @@ import game.Positionable;
 import game.QuestionBlocks;
 import game.Blocks;
 import game.Entity;
+
 import map.ReadFromFile;
 
 @SuppressWarnings("serial")
@@ -76,14 +79,15 @@ public final class Board extends JPanel implements ActionListener { //final
 		try {
 			block = new Blocks();
 			qblock = new QuestionBlocks();
+			System.out.println("1");
 			mapBlocks = new ReadFromFile();
-		}
-		
+			System.out.println("5");
+		} 
 		catch(BadFileException exc) {
 			System.out.println("I think I belong here\n");
 			System.out.print("Map file corrupted");
 		}
-		
+		//FIXME: FIND WHY NO EXCEPTION IS CAUGHT
 		catch(FileNotFoundException exc) {
 			System.out.println("I think I belong here\n");
 			System.out.print("File not found");
@@ -127,14 +131,14 @@ public final class Board extends JPanel implements ActionListener { //final
 			koopa.setSpeed(1);
 		repaint();
 		
-		//TODO Mario catches MagicMushroom and becomes SUPERMARIO
+		//TODO: Mario catches MagicMushroom and becomes SUPERMARIO
 	}
 	
 	public void paint (Graphics g) {
 		super.paint(g);
 		Graphics2D graphics2d = (Graphics2D) g;
-	
 		
+		//TODO: Make walls stop moving when reaching white
 		if(mario.getIsMarioMoving()) {
 			graphics2d.drawImage(background, 0-mario.getMarioMoving(), 0, null);
 			graphics2d.drawImage(background, 0-mario.getMarioMoving()+ getWidth(), 0, null);

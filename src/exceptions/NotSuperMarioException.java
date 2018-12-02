@@ -7,7 +7,7 @@
 package exceptions;
 
 public class NotSuperMarioException extends GameException {
-
+//TODO: MAKE THIS EXCEPTION VIABLE
 private static final long serialVersionUID = 1L;
 	
 	public NotSuperMarioException() {

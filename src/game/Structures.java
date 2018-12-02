@@ -9,7 +9,7 @@ package game;
 public class Structures extends GameObject {
 
 	public Structures() {
-		// TODO Structure Class
+		// CHECKME: make Structure Class
 		
 	}
 

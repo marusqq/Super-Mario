@@ -13,6 +13,8 @@ import java.util.Scanner;
 
 import exceptions.BadFileException;
 
+
+//FIXME: FIX INPUT FILE
 public class ReadFromFile {
 	
 	public int blockCount = 0;
@@ -27,8 +29,10 @@ public class ReadFromFile {
 	public ReadFromFile() throws BadFileException, FileNotFoundException {
 		
 		File file = new File("C:/Users/Marius/eclipse-workspace/Super Mario/map/blocks.txt"); 
+		System.out.println("2");
 		Scanner sc = new Scanner(file); 
 		while(sc.hasNext()) {
+			System.out.println("i have next in while");
 			
 			if(sc.hasNext()) {
 				input = sc.next();
@@ -83,12 +87,13 @@ public class ReadFromFile {
 					}
 				}
 				else {
+					System.out.println("4");
 					new BadFileException ("No B or QB after newline\n");
 					break;
 				}
 			}
 			else {
-				new BadFileException("No input in map file\n");
+				new BadFileException ("No input in map file\n");
 				break;
 			}
 		}
