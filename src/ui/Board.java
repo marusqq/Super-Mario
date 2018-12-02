@@ -16,10 +16,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.FileNotFoundException;
+
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+import exceptions.BadFileException;
 import sound.PlaySound;
 import game.Mario;
 import game.Goomba;
@@ -28,32 +31,35 @@ import game.Positionable;
 import game.QuestionBlocks;
 import game.Blocks;
 import game.Entity;
+import map.ReadFromFile;
 
 @SuppressWarnings("serial")
 public final class Board extends JPanel implements ActionListener { //final
-	KoopaTroopa koopa;
+	KoopaTroopa koopa; //some fields for monster classes
 	Goomba goomba;
 	Mario mario;
-	Blocks block;
+	
+	Blocks block; //some fields for block classes
 	QuestionBlocks qblock;
 	
+	ReadFromFile mapBlocks; // field from ReadFromFile class for mapBlocks
 	
-	PlaySound sound;
+	PlaySound sound; //field for audio class
 	
-	private Entity marioMovable;
+	private Entity marioMovable;  //Entity field for trying to move with Entity
 	private Entity goombaMovable;
 	private Entity koopaMovable;
 	
-	Positionable marioPositionable;
+	Positionable marioPositionable; //Positionable fields for trying to position with Positionable
 	Positionable goombaPositionable;
 	Positionable koopaPositionable;
 	
-	Entity[] movableEntities = { marioMovable, goombaMovable, koopaMovable } ;
-	Positionable[] positionableEntities = { marioPositionable, goombaPositionable, koopaPositionable } ;
+	Entity[] movableEntities = { marioMovable, goombaMovable, koopaMovable } ; //array from fields(45-47 line)
+	Positionable[] positionableEntities = { marioPositionable, goombaPositionable, koopaPositionable } ; //array from fields (48-50 line)
 	
-	
+	ImageIcon i = new ImageIcon("C:/Users/Marius/eclipse-workspace/Super Mario/resources/background.png"); //background picture
 
-	Timer time;
+	Timer time; //field for timer
 	public Image background;
 	
 	
@@ -62,14 +68,34 @@ public final class Board extends JPanel implements ActionListener { //final
 		goomba = new Goomba(400,385);
 		mario = new Mario(40,360);
 		
-		block = new Blocks();
-		qblock = new QuestionBlocks();
-		
-		sound = new PlaySound();
-
 		System.out.println(mario);
 		System.out.println(goomba);
 		System.out.println(koopa);
+		//mario, koopa, goomba created and printed
+		
+		try {
+			block = new Blocks();
+			qblock = new QuestionBlocks();
+			mapBlocks = new ReadFromFile();
+		}
+		
+		catch(BadFileException exc) {
+			System.out.println("I think I belong here\n");
+			System.out.print("Map file corrupted");
+		}
+		
+		catch(FileNotFoundException exc) {
+			System.out.println("I think I belong here\n");
+			System.out.print("File not found");
+		}
+		catch (Exception e) {
+	         System.out.println("This has to be the world ending");
+	    }
+		//try to read and from file and load structures
+		
+		
+		sound = new PlaySound();
+		
 		for(int i=0;i<3;i++)
 			System.out.println(movableEntities[i]);
 		for(int i=0;i<3;i++)
@@ -77,22 +103,22 @@ public final class Board extends JPanel implements ActionListener { //final
 		
 		addKeyListener(new AL());
 		setFocusable(true);
-		ImageIcon i = new ImageIcon("C:/Users/Marius/eclipse-workspace/Super Mario/resources/background.png");
 		background = i.getImage();
-		time = new Timer(1, this);
+		time = new Timer(10, this);
 		time.start();	
 	}
 	
 	public void actionPerformed(ActionEvent press) {
+		
 		mario.move();
 		goomba.move();
 		koopa.move();
 		
 		//goomba movement collision
 		if(goomba.getX() == mario.getX() + 60)
-			goomba.setSpeed(-2);
+			goomba.setSpeed(-1);
 		if(goomba.getX() == getWidth())
-			goomba.setSpeed(2);
+			goomba.setSpeed(1);
 		
 		//koopa movement collision
 		if(koopa.getX() == mario.getX() + 60)
@@ -100,20 +126,26 @@ public final class Board extends JPanel implements ActionListener { //final
 		if(koopa.getX() == getWidth())
 			koopa.setSpeed(1);
 		repaint();
+		
+		//TODO Mario catches MagicMushroom and becomes SUPERMARIO
 	}
 	
 	public void paint (Graphics g) {
 		super.paint(g);
 		Graphics2D graphics2d = (Graphics2D) g;
 	
-		graphics2d.drawImage(background, 0, 0, null);
+		
 		if(mario.getIsMarioMoving()) {
+			graphics2d.drawImage(background, 0-mario.getMarioMoving(), 0, null);
+			graphics2d.drawImage(background, 0-mario.getMarioMoving()+ getWidth(), 0, null);
 			graphics2d.drawImage(block.getImage(), 130-mario.getMarioMoving(), 150, null);
 			graphics2d.drawImage(block.getImage(), 270-mario.getMarioMoving(), 150, null);
 			graphics2d.drawImage(qblock.getImage(), 200-mario.getMarioMoving(), 150, null);
 			graphics2d.drawImage(block.getImage(), 340-mario.getMarioMoving(), 150, null);
 		}
 		else {
+			graphics2d.drawImage(background, 0-mario.getLastSpot(), 0, null);
+			graphics2d.drawImage(background, 0-mario.getLastSpot() + getWidth(), 0, null);
 			graphics2d.drawImage(block.getImage(), 130-mario.getLastSpot(), 150, null);
 			graphics2d.drawImage(block.getImage(), 270-mario.getLastSpot(), 150, null);
 			graphics2d.drawImage(qblock.getImage(), 200-mario.getLastSpot(), 150, null);

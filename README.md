@@ -6,3 +6,5 @@ jar -> build path for audio to play,
 bin -> all the .class files,
 resources -> all the .png and .mp3 files used,
 src -> all the .java files,
+map -> files used for loading the map,
+info -> info about the hierarchy, etc.

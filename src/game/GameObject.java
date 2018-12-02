@@ -8,7 +8,7 @@ package game;
 
 import java.awt.Image;
 
-public abstract class GameObject {
+public abstract class GameObject implements Positionable{
 	
 	protected int x, y;
 	Image image;

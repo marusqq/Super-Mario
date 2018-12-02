@@ -10,21 +10,24 @@ package game;
 import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 
+import exceptions.NotSuperMarioException;
 import exceptions.OutOfBoundsPositionException;
 
 public class Mario extends Entity implements Movable {
 
 	public int marioMoving = 0;
 	public int lastSpot;
-	public boolean isMarioMoving = false;
+	public boolean isMarioMoving = false, superMario = false;
 	public int dirBackground;
 	public int startingPoint;
 	public boolean jumping;
 	ImageIcon playerFacingLeft = new ImageIcon("C:/Users/Marius/eclipse-workspace/Super Mario/resources/marioleft.png"); 
     ImageIcon playerFacingRight = new ImageIcon("C:/Users/Marius/eclipse-workspace/Super Mario/resources/marioright.png");
+    ImageIcon marioSuperImageLeft = new ImageIcon ("C:/Users/Marius/eclipse-workspace/Super Mario/resources/supermarioleft.png");
+    ImageIcon marioSuperImageRight = new ImageIcon ("C:/Users/Marius/eclipse-workspace/Super Mario/resources/supermarioright.png");
     
 	public Mario() {
-		setSpeed(2);
+		setSpeed(1);
 		setName("Mario");
 		setGravity(300);
 		image = playerFacingRight.getImage();
@@ -32,7 +35,7 @@ public class Mario extends Entity implements Movable {
 	}	
 	@SuppressWarnings("unused")
 	public Mario(int x, int y) {
-		setSpeed(3);
+		setSpeed(1);
 		setName("Mario");
 		setGravity(300);
 		int startingPoint = x;
@@ -62,20 +65,25 @@ public class Mario extends Entity implements Movable {
 	public void keyPressed(KeyEvent press) {
 		int key = press.getKeyCode();
 		if(key == KeyEvent.VK_A) {
-			
-			image = playerFacingLeft.getImage(); 
+			if(isMarioSuperMario())
+				image = marioSuperImageLeft.getImage();
+			else
+				image = playerFacingLeft.getImage(); 
 			dirx = -speed;
 			isMarioMoving = true;
-			marioMoving--;
+			marioMoving= marioMoving - 4;
 		}
 			
 
 		if(key == KeyEvent.VK_D) {
 			
-			image = playerFacingRight.getImage(); 
+			if(isMarioSuperMario())
+				image = marioSuperImageRight.getImage();
+			else
+				image = playerFacingRight.getImage();  
 			dirx = speed;
 			isMarioMoving = true;
-			marioMoving++;
+			marioMoving= marioMoving + 4;
 		}
 				
 		if(key == KeyEvent.VK_SPACE) 
@@ -88,6 +96,19 @@ public class Mario extends Entity implements Movable {
 	
 	public int getMarioMoving() {
 		return marioMoving;
+	}
+	
+	public boolean isMarioSuperMario() {
+		return superMario;
+	}
+	
+	public ImageIcon superMario(boolean eatenMushroom) throws NotSuperMarioException{
+		if(eatenMushroom)
+			return marioSuperImageRight;
+		else {
+			throw new NotSuperMarioException("Error. Mario is not SuperMario yet!");
+		}
+			
 	}
 	
 	public int getLastSpot() {

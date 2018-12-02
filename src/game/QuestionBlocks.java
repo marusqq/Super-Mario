@@ -15,6 +15,7 @@ public class QuestionBlocks extends Blocks {
 	public QuestionBlocks() {
 		super();
 		image = questionblockIcon.getImage();
+		//TODO: Make magic mushroom if hit from beneath
 	}
 
 }

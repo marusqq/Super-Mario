@@ -10,7 +10,7 @@ package game;
 
 import java.awt.Image;
 
-public abstract class Entity extends GameObject implements Modifiable, Movable{
+public abstract class Entity extends GameObject implements Modifiable{
 	public int dirx;
 	public int gravity, speed;
 	boolean friendly;
@@ -22,6 +22,7 @@ public abstract class Entity extends GameObject implements Modifiable, Movable{
 		speed = getDefaultSpeed();
 		friendly = getDefaultFriendly();
 		name = "Bad Guy";
+		speed = 1;
 	}
 	
 	public void setSpeed(int s) {
