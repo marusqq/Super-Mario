@@ -15,7 +15,9 @@ import exceptions.OutOfBoundsPositionException;
 
 public class Mario extends Entity implements Movable {
 
-	Goomba goombaCopy; 
+	public int marioMoving = 0;
+	public int lastSpot;
+	public boolean isMarioMoving = false;
 	public int dirBackground;
 	public int startingPoint;
 	public boolean jumping;
@@ -43,7 +45,7 @@ public class Mario extends Entity implements Movable {
 	public void move(){ //final
 		try {
 			x = x + dirx;
-			dirBackground = dirBackground + dirx;
+			dirBackground = dirBackground + (dirx*3);
 			if(x<0)
 				throw new OutOfBoundsPositionException("OutOfBoundsException\n");
 			} 
@@ -63,7 +65,9 @@ public class Mario extends Entity implements Movable {
 		if(key == KeyEvent.VK_A) {
 			
 			image = playerFacingLeft.getImage(); 
-			dirx = -speed;	
+			dirx = -speed;
+			isMarioMoving = true;
+			marioMoving--;
 		}
 			
 
@@ -71,14 +75,24 @@ public class Mario extends Entity implements Movable {
 			
 			image = playerFacingRight.getImage(); 
 			dirx = speed;
+			isMarioMoving = true;
+			marioMoving++;
 		}
 				
 		if(key == KeyEvent.VK_SPACE) 
 			jump();
 	}
 	
-	public int getStartingPoint() {
-		return startingPoint;
+	public boolean getIsMarioMoving () {
+		return isMarioMoving;
+	}
+	
+	public int getMarioMoving() {
+		return marioMoving;
+	}
+	
+	public int getLastSpot() {
+		return lastSpot;
 	}
 	
 	public void jump() {
@@ -86,10 +100,17 @@ public class Mario extends Entity implements Movable {
 	}
 	public void keyReleased(KeyEvent press) {
 		int key = press.getKeyCode();
-		if(key == KeyEvent.VK_A)
+		if(key == KeyEvent.VK_A) {
 			dirx = 0;
-		if(key == KeyEvent.VK_D)
+			isMarioMoving = false;
+			lastSpot = marioMoving;
+		}
+		if(key == KeyEvent.VK_D) {
 			dirx = 0;
+			isMarioMoving = false;
+			lastSpot = marioMoving;
+		}
+			
 			
 			
 	}

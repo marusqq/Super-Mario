@@ -6,10 +6,14 @@
 
 package game;
 
-public abstract class QuestionBlocks extends Blocks {
+import javax.swing.ImageIcon;
 
+public class QuestionBlocks extends Blocks {
+
+	ImageIcon questionblockIcon = new ImageIcon ("C:/Users/Marius/eclipse-workspace/Super Mario/resources/questionblock.png");
 	public QuestionBlocks() {
-		// TODO Auto-generated constructor stub
+		super();
+		image = questionblockIcon.getImage();
 	}
 
 }

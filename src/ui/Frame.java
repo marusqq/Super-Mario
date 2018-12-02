@@ -10,8 +10,8 @@ import javax.swing.JFrame;
 
 public class Frame {
 	
-	public static final int LENGTH = 1152;
-	public static final int WIDTH = 648;
+	public static final int LENGTH = 1024;
+	public static final int WIDTH = 576;
 	
 	public static void main(String[] args) {
 		new Frame();

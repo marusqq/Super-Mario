@@ -5,7 +5,7 @@
 
 package game;
 
-public abstract class Structures extends GameObject {
+public class Structures extends GameObject {
 
 	public Structures() {
 		// TODO Auto-generated constructor stub

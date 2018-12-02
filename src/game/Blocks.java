@@ -6,10 +6,20 @@
 
 package game;
 
-public abstract class Blocks extends Structures {
+import java.awt.Image;
+import javax.swing.ImageIcon;
 
+public class Blocks extends Structures {
+
+	ImageIcon blockIcon = new ImageIcon ("C:/Users/Marius/eclipse-workspace/Super Mario/resources/block_dark.png");
+	
 	public Blocks() {
-		// TODO Auto-generated constructor stub
+		super();
+		image = blockIcon.getImage();
+	}
+	
+	public Image getImage() {
+		return image;
 	}
 
 }

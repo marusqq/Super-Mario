@@ -19,10 +19,13 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+import sound.PlaySound;
 import game.Mario;
 import game.Goomba;
 import game.KoopaTroopa;
 import game.Positionable;
+import game.QuestionBlocks;
+import game.Blocks;
 import game.Entity;
 
 @SuppressWarnings("serial")
@@ -30,6 +33,11 @@ public final class Board extends JPanel implements ActionListener { //final
 	KoopaTroopa koopa;
 	Goomba goomba;
 	Mario mario;
+	Blocks block;
+	QuestionBlocks qblock;
+	
+	
+	PlaySound sound;
 	
 	private Entity marioMovable;
 	private Entity goombaMovable;
@@ -49,9 +57,14 @@ public final class Board extends JPanel implements ActionListener { //final
 	
 	
 	public Board() { 
-		koopa = new KoopaTroopa(600, 490);
-		goomba = new Goomba(400,555);
-		mario = new Mario(40,530);
+		koopa = new KoopaTroopa(600, 355);
+		goomba = new Goomba(400,385);
+		mario = new Mario(40,360);
+		
+		block = new Blocks();
+		qblock = new QuestionBlocks();
+		
+		sound = new PlaySound();
 
 		System.out.println(mario);
 		System.out.println(goomba);
@@ -73,12 +86,6 @@ public final class Board extends JPanel implements ActionListener { //final
 		mario.move();
 		goomba.move();
 		koopa.move();
-		try {
-			Thread.sleep(1);
-		} catch (InterruptedException exc) {
-			// TODO Auto-generated catch block
-			exc.printStackTrace();
-		}
 		
 		//goomba movement collision
 		if(goomba.getX() == mario.getX() + 60)
@@ -98,13 +105,22 @@ public final class Board extends JPanel implements ActionListener { //final
 		super.paint(g);
 		Graphics2D graphics2d = (Graphics2D) g;
 	
-		graphics2d.drawImage(background, 0-mario.dirBackground, 0, null);
-		graphics2d.drawImage(background, (Frame.LENGTH-10)-mario.dirBackground, 0, null);
-		graphics2d.drawImage(background, 2*(Frame.LENGTH-10)-mario.dirBackground, 0, null);
-		graphics2d.drawImage(background, 3*(Frame.LENGTH-10)-mario.dirBackground, 0, null);
-		graphics2d.drawImage(background, 4*(Frame.LENGTH-10)-mario.dirBackground, 0, null);
+		graphics2d.drawImage(background, 0, 0, null);
+		if(mario.getIsMarioMoving()) {
+			graphics2d.drawImage(block.getImage(), 130-mario.getMarioMoving(), 150, null);
+			graphics2d.drawImage(block.getImage(), 270-mario.getMarioMoving(), 150, null);
+			graphics2d.drawImage(qblock.getImage(), 200-mario.getMarioMoving(), 150, null);
+			graphics2d.drawImage(block.getImage(), 340-mario.getMarioMoving(), 150, null);
+		}
+		else {
+			graphics2d.drawImage(block.getImage(), 130-mario.getLastSpot(), 150, null);
+			graphics2d.drawImage(block.getImage(), 270-mario.getLastSpot(), 150, null);
+			graphics2d.drawImage(qblock.getImage(), 200-mario.getLastSpot(), 150, null);
+			graphics2d.drawImage(block.getImage(), 340-mario.getLastSpot(), 150, null);
+		}
 		
-		graphics2d.drawImage(mario.getImage(), mario.getStartingPoint(), mario.getY(), null);
+		
+		graphics2d.drawImage(mario.getImage(), mario.getX(), mario.getY(), null);
 		graphics2d.drawImage(goomba.getImage(), goomba.getX(), goomba.getY(), null);
 		graphics2d.drawImage(koopa.getImage(), koopa.getX(), koopa.getY(), null);
 		
