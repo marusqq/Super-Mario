@@ -6,33 +6,31 @@
 
 package exceptions;
 
-public class GameException extends Exception {
+public class GameLogicException extends Exception {
 
-	
-
-	protected String message;
+	protected String message = "GameLogicException :";
 	private static final long serialVersionUID = 1L;
 
-	public GameException() {
+	public GameLogicException() {
 		super();
 		System.out.println("GameException: GameLogic has been broken. Goob Job!");
 	}
 
-	public GameException(String message) {
+	public GameLogicException(String message) {
 		super(message);
 		this.message = message;
 	}
 
-	public GameException(Throwable cause) {
+	public GameLogicException(Throwable cause) {
 		super(cause);
 	}
 
-	public GameException(String message, Throwable cause) {
+	public GameLogicException(String message, Throwable cause) {
 		super(message, cause);
 		this.message = message;
 	}
 
-	public GameException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+	public GameLogicException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
 		super(message, cause, enableSuppression, writableStackTrace);
 		this.message = message;
 	}

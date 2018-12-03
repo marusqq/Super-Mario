@@ -6,10 +6,9 @@
 
 package exceptions;
 
-public class OutOfBoundsPositionException extends GameException{
+public class OutOfBoundsPositionException extends GameLogicException{
 	
 	private static final long serialVersionUID = 1L;
-	
 	public OutOfBoundsPositionException() {
 		super();
 	}
