@@ -13,16 +13,16 @@ import java.util.Scanner;
 
 import exceptions.BadFileException;
 
-
-//FIXME: FIX INPUT FILE
 public class ReadFromFile {
 	
 	public int blockCount = 0;
 	public int qBlockCount = 0;
+	
 	ArrayList<Integer> blocksX = new ArrayList<Integer>();
 	ArrayList<Integer> blocksY = new ArrayList<Integer>();
 	ArrayList<Integer> qBlocksX = new ArrayList<Integer>();
 	ArrayList<Integer> qBlocksY = new ArrayList<Integer>();
+	
 	public String input;
 	public int coordinate;
 	
@@ -34,7 +34,6 @@ public class ReadFromFile {
 			
 			if(sc.hasNext()) {
 				input = sc.next();
-				System.out.println(input);
 				
 				if(input.equals("B")) {
 					blockCount++;

@@ -11,19 +11,11 @@ public class OutOfBoundsPositionException extends GameLogicException{
 	private static final long serialVersionUID = 1L;
 	public OutOfBoundsPositionException() {
 		super();
+		message = "OutOfBoundsPositionException:";
 	}
 	
 	public OutOfBoundsPositionException(String message) {
 		super(message);
-	}
-	
-	
-	public String toString () {
-		return "OutOfBoundsPosition: " + message;
-	}
-	
-	public String getMessage() {
-		return message;
 	}
 
 }

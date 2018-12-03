@@ -21,10 +21,6 @@ public class GameLogicException extends Exception {
 		this.message = message;
 	}
 
-	public GameLogicException(Throwable cause) {
-		super(cause);
-	}
-
 	public GameLogicException(String message, Throwable cause) {
 		super(message, cause);
 		this.message = message;
@@ -33,6 +29,14 @@ public class GameLogicException extends Exception {
 	public GameLogicException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
 		super(message, cause, enableSuppression, writableStackTrace);
 		this.message = message;
+	}
+	
+	public String toString () {
+		return "Exception: " + message;
+	}
+	
+	public String getMessage() {
+		return message;
 	}
 
 }

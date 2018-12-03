@@ -7,25 +7,16 @@
 package exceptions;
 
 public class NotSuperMarioException extends GameLogicException {
-//TODO: MAKE THIS EXCEPTION VIABLE
-private static final long serialVersionUID = 1L;
 	
-	String message;
-	public NotSuperMarioException() {
-		super();
-	}
+	private static final long serialVersionUID = 1L;
 	
-	public NotSuperMarioException(String message) {
-		super(message);
-	}
+		String message = "Mario is not Super Mario";
+		public NotSuperMarioException() {
+			super();
+		}
 	
-	
-	public String toString () {
-		return "Not Super Mario when Super Mario was requested:" + message;
-	}
-	
-	public String getMessage() {
-		return message;
-	}
+		public NotSuperMarioException(String message) {
+			super(message);
+		}
 
 }
