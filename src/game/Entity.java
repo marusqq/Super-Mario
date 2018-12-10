@@ -10,6 +10,7 @@ package game;
 
 import java.awt.Image;
 
+
 public abstract class Entity extends GameObject implements Modifiable{
 	public int dirx;
 	public int gravity, speed;
@@ -29,6 +30,9 @@ public abstract class Entity extends GameObject implements Modifiable{
 		this.speed = s;
 	}
 	
+	public void setImage(Image imageWoop) {
+		this.image = imageWoop;
+	}
 	
 	public void setName (String s) {
 		this.name = s;

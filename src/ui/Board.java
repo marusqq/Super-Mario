@@ -1,7 +1,7 @@
 /* @author Marius Pozniakovas
  * version 1.0
  * Klase piesimui i frame
- * class for painthing everything to frame
+ * class for painting everything to frame
  */
 
 
@@ -34,52 +34,55 @@ import game.QuestionBlocks;
 import game.Blocks;
 import game.Entity;
 
-import map.ReadFromFile;
+import map.ReaderFromFile;
 
 @SuppressWarnings("serial")
 public final class Board extends JPanel implements ActionListener { //final
 	KoopaTroopa koopa; //some fields for monster classes
 	Goomba goomba;
 	Mario mario;
+	Goomba goombaCopy;
 	
 	Blocks block; //some fields for block classes
 	QuestionBlocks qblock;
 	
-	ReadFromFile mapBlocks; // field from ReadFromFile class for mapBlocks
+	ReaderFromFile mapBlocks; // field from ReadFromFile class for mapBlocks
 	
 	PlaySound sound; //field for audio class
 	
-	private Entity marioMovable;  //Entity field for trying to move with Entity
-	private Entity goombaMovable;
-	private Entity koopaMovable;
-	
-	Positionable marioPositionable; //Positionable fields for trying to position with Positionable
-	Positionable goombaPositionable;
-	Positionable koopaPositionable;
-	
-	Entity[] movableEntities = { marioMovable, goombaMovable, koopaMovable } ; //array from fields(45-47 line)
-	Positionable[] positionableEntities = { marioPositionable, goombaPositionable, koopaPositionable } ; //array from fields (48-50 line)
-	
+	Entity[] movableEntities;
+	Positionable[] positionableEntities;  // fields for making array in board	
+
 	ImageIcon i = new ImageIcon("C:/Users/Marius/eclipse-workspace/Super-Mario/resources/background.png"); //background picture
 
 	Timer time; //field for timer
 	public Image background;
-	
+	private boolean getDoubled; //for when goomba gets doubled
 	
 	public Board() { 
 		koopa = new KoopaTroopa(600, 355);
 		goomba = new Goomba(400,385);
 		mario = new Mario(40,360);
 		
+		
 		System.out.println(mario);
 		System.out.println(goomba);
 		System.out.println(koopa);
+		System.out.println(goombaCopy);
+		
+		
+		Entity[] tmp = {mario, goomba, koopa, goombaCopy};
+		this.movableEntities = tmp;
+		
+		Positionable[] temp = {mario, goomba, koopa, goombaCopy};
+		this.positionableEntities = temp;
+		
 		//mario, koopa, goomba created and printed
 		
 		try {
 			block = new Blocks();
 			qblock = new QuestionBlocks();
-			mapBlocks = new ReadFromFile();
+			mapBlocks = new ReaderFromFile();
 		} 
 		catch(BadFileException exc) {
 			System.out.println(exc.getMessage() + '\n');
@@ -96,11 +99,6 @@ public final class Board extends JPanel implements ActionListener { //final
 		
 		sound = new PlaySound();
 		
-		for(int i=0;i<3;i++)
-			System.out.println(movableEntities[i]);
-		for(int i=0;i<3;i++)
-			System.out.println(positionableEntities[i]);
-		
 		addKeyListener(new AL());
 		setFocusable(true);
 		background = i.getImage();
@@ -108,23 +106,52 @@ public final class Board extends JPanel implements ActionListener { //final
 		time.start();	
 	}
 	
+	@Override
+	public Goomba clone(){
+		Goomba goombaCopy =null;
+		try {
+			goombaCopy = (Goomba) super.clone();
+		     }catch (CloneNotSupportedException e) {
+		    	 goombaCopy = new Goomba(goomba.getX(), goomba.getY());
+		    	 e.printStackTrace();
+		     }
+		     return goombaCopy;
+	}
+	
 	public void actionPerformed(ActionEvent press) {
 		
-		mario.move();
-		goomba.move();
-		koopa.move();
+		movableEntities[0].move();
+		movableEntities[1].move();
+		movableEntities[2].move();
+		if(getDoubled)
+			goombaCopy.move();
+		
+		System.out.println(goombaCopy);
 		
 		//goomba movement collision
-		if(goomba.getX() == mario.getX() + 60)
-			goomba.setSpeed(-1);
-		if(goomba.getX() == getWidth())
-			goomba.setSpeed(1);
+		if(positionableEntities[1].getX() == positionableEntities[0].getX() + 60) {
+			movableEntities[1].setSpeed(-1);
+			goombaCopy = goomba.clone();
+			getDoubled = true;
+			goombaCopy.setX(goomba.getX() - 400);
+			goombaCopy.setSpeed(-2);
+		}
+		
+		if(getDoubled && goombaCopy.getX() == getWidth()) {	
+			goombaCopy = null;
+			getDoubled = false;
+		}
+		
+			
+			
+		if(positionableEntities[1].getX() == getWidth())
+			movableEntities[1].setSpeed(1);
 		
 		//koopa movement collision
-		if(koopa.getX() == mario.getX() + 60)
-			koopa.setSpeed(-1);
-		if(koopa.getX() == getWidth())
-			koopa.setSpeed(1);
+		if(positionableEntities[2].getX() == positionableEntities[0].getX() + 60)
+			movableEntities[2].setSpeed(-1);
+		if(positionableEntities[2].getX() == getWidth())
+			movableEntities[2].setSpeed(1);
 		repaint();
 		
 		//TODO: Mario catches MagicMushroom and becomes SUPERMARIO
@@ -156,7 +183,9 @@ public final class Board extends JPanel implements ActionListener { //final
 		graphics2d.drawImage(mario.getImage(), mario.getX(), mario.getY(), null);
 		graphics2d.drawImage(goomba.getImage(), goomba.getX(), goomba.getY(), null);
 		graphics2d.drawImage(koopa.getImage(), koopa.getX(), koopa.getY(), null);
-		
+		if(getDoubled) {
+			graphics2d.drawImage(goombaCopy.getImage(), goombaCopy.getX(), goombaCopy.getY(), null);
+		}
 		
 		
 		//both moving

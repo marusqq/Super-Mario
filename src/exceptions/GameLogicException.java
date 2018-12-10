@@ -18,12 +18,12 @@ public class GameLogicException extends Exception {
 
 	public GameLogicException(String message) {
 		super(message);
-		this.message = message;
+		//this.message = message;
 	}
 
 	public GameLogicException(String message, Throwable cause) {
 		super(message, cause);
-		this.message = message;
+		//this.message = message;
 	}
 
 	public GameLogicException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {

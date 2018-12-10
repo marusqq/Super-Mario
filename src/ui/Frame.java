@@ -15,6 +15,7 @@ public class Frame {
 	public static final int WIDTH = 576;
 	
 	public static void main(String[] args) {
+		
 		new Frame();
 	}
 		

@@ -13,10 +13,11 @@ import java.util.Scanner;
 
 import exceptions.BadFileException;
 
-public class ReadFromFile {
+public class ReaderFromFile {
 	
 	public int blockCount = 0;
 	public int qBlockCount = 0;
+	private int exceptionType;
 	
 	ArrayList<Integer> blocksX = new ArrayList<Integer>();
 	ArrayList<Integer> blocksY = new ArrayList<Integer>();
@@ -25,8 +26,8 @@ public class ReadFromFile {
 	
 	public String input;
 	public int coordinate;
-	
-	public ReadFromFile() throws BadFileException, FileNotFoundException {
+	//try catch su resursais/ resources
+	public ReaderFromFile() throws BadFileException, FileNotFoundException {
 		
 		File file = new File("C:/Users/Marius/eclipse-workspace/Super-Mario/map/blocks.txt"); 
 		Scanner sc = new Scanner(file); 
@@ -48,14 +49,14 @@ public class ReadFromFile {
 							}
 						
 						else {
-							sc.close();
-							throw new BadFileException ("No Y coordinate after B\n");
+							exceptionType = 1;
+							break;
 						}
 					}
 					
 					else {
-						sc.close();
-						throw new BadFileException ("No X coordinate after B\n");
+						exceptionType = 2;
+						break;
 					}
 					
 				}
@@ -74,27 +75,45 @@ public class ReadFromFile {
 						}
 						
 						else {
-							sc.close();
-							throw new BadFileException ("No Y after X in QB\n");
+							exceptionType = 3;
+							break;
 						}
 					}
 					
 					else {
-						sc.close();
-						throw new BadFileException ("No X after QB\n");
+						exceptionType = 4;
+						break;
 					}
 				}
 				else {
-					sc.close();
-					throw new BadFileException ("No B or QB after newline\n");
+					exceptionType = 5;
+					break;
 				}
 			}
 			else {
-				sc.close();
-				throw new BadFileException ("No input in map file\n");
+				exceptionType = 6;
+				break;
 			}
 		}
 		sc.close();
+		switch(exceptionType) {
+		case 1:
+			throw new BadFileException("No Y coordinate after B\n");
+		case 2:
+			throw new BadFileException("No X coordinate after B\n");
+		case 3:
+			throw new BadFileException("No Y after X in QB\n");
+		case 4:
+			throw new BadFileException("No X after QB\n");
+		case 5:
+			throw new BadFileException("No B or QB after newline\n");
+		case 6:
+			throw new BadFileException("No input in map file\n");	
+		default:
+			//noException, nice!
+			break;
+			
+		}
 	}
 	
 	public int getBlockCount() {
